@@ -1,4 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+<!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Responsive Landing Page using HTML, CSS & Javascript</title>
+     <link
+       href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+       rel="stylesheet"
+     />
+     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
 * {
   margin: 0;
@@ -370,3 +383,203 @@ footer {
     font-size: 19px;
   }
 }
+     </style>
+   </head>
+   <body>
+     <!-- ==== HEADER ==== -->
+     <header class="container header">
+       <!-- ==== NAVBAR ==== -->
+       <nav class="nav">
+         <div class="logo">
+           <h2>CODEWITHME.</h2>
+         </div>
+ 
+         <div class="nav_menu" id="nav_menu">
+           <button class="close_btn" id="close_btn">
+             <i class="ri-close-fill"></i>
+           </button>
+ 
+           <ul class="nav_menu_list">
+             <li class="nav_menu_item">
+               <a href="#" class="nav_menu_link">account</a>
+             </li>
+             <li class="nav_menu_item">
+               <a href="#" class="nav_menu_link">about</a>
+             </li>
+             <li class="nav_menu_item">
+               <a href="#" class="nav_menu_link">service</a>
+             </li>
+             <li class="nav_menu_item">
+               <a href="#" class="nav_menu_link">contact</a>
+             </li>
+           </ul>
+         </div>
+ 
+         <button class="toggle_btn" id="toggle_btn">
+           <i class="ri-menu-line"></i>
+         </button>
+       </nav>
+     </header>
+ 
+     <section class="wrapper">
+       <div class="container">
+         <div class="grid-cols-2">
+           <div class="grid-item-1">
+              <h1 class="main-heading">
+               Welcome to <span>OUR GAME ZONE</span>
+               <br />
+              
+             <h3 class="main-heading" > We are
+                 <span class="multi-text"></span>
+                 <span class="blink"></span>
+               </h3>
+             </h1>
+             <p class="info-text">
+               Build a beautiful, modern website with flexible components built
+               from scratch.
+             </p>
+ 
+             <div class="btn_wrapper">
+               <button class="btn view_more_btn" onclick="window.location.href='/signup'" style="color: white;">
+                 EXPLORE <i class="ri-arrow-right-line"></i>
+               </button>
+ 
+               <button class="btn documentation_btn"  onclick="window.location.href='/login'">Login</button>
+             </div>
+           </div>
+           <div class="grid-item-2">
+             <div class="team_img_wrapper">
+               <img src="../images/img.png" alt="team-img" />
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+     <footer>
+       
+     </footer>
+ 
+  
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+   
+     <script>
+        const navId = document.getElementById("nav_menu"),
+ToggleBtnId = document.getElementById("toggle_btn"),
+CloseBtnId = document.getElementById("close_btn");
+
+ToggleBtnId.addEventListener("click", () => {
+navId.classList.add("show");
+});
+
+
+CloseBtnId.addEventListener("click", () => {
+navId.classList.remove("show");
+});
+
+
+AOS.init();
+
+
+gsap.from(".logo", {
+opacity: 0,
+y: -10,
+delay: 1,
+duration: 0.5,
+});
+
+gsap.from(".nav_menu_list .nav_menu_item", {
+opacity: 0,
+y: -10,
+delay: 1.4,
+duration: 0.5,
+stagger: 0.3,
+});
+
+gsap.from(".toggle_btn", {
+opacity: 0,
+y: -10,
+delay: 1.4,
+duration: 0.5,
+});
+
+gsap.from(".main-heading", {
+opacity: 0,
+y: 20,
+delay: 2.4,
+duration: 1,
+});
+
+gsap.from(".info-text", {
+opacity: 0,
+y: 20,
+delay: 2.8,
+duration: 1,
+});
+
+gsap.from(".btn_wrapper", {
+opacity: 0,
+y: 20,
+delay: 2.8,
+duration: 1,
+});
+
+gsap.from(".team_img_wrapper img", {
+opacity: 0,
+y: 20,
+delay: 3,
+duration: 1,
+});
+
+
+
+
+// typing animation
+
+document.addEventListener("DOMContentLoaded", function () {
+  const options = {
+    strings: ['ABHISHEK', 'GOURAV', 'ISHA' ],
+    typeSpeed: 150,
+    backSpeed: 50,
+    backDelay: 1000,
+    loop: true
+  };
+
+  const multiTextElement = document.querySelector('.multi-text');
+  let currentTextIndex = 0;
+  let currentText = '';
+  let isDeleting = false;
+
+  function type() {
+    const fullText = options.strings[currentTextIndex];
+    if (isDeleting) {
+      currentText = fullText.substring(0, currentText.length - 1);
+    } else {
+      currentText = fullText.substring(0, currentText.length + 1);
+    }
+
+    multiTextElement.textContent = currentText;
+
+    let typeSpeed = options.typeSpeed;
+    if (isDeleting) {
+      typeSpeed /= 2; // Faster when deleting
+    }
+
+    if (!isDeleting && currentText === fullText) {
+      typeSpeed = options.backDelay;
+      isDeleting = true;
+    } else if (isDeleting && currentText === '') {
+      isDeleting = false;
+      currentTextIndex = (currentTextIndex + 1) % options.strings.length;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  type();
+});
+     </script>
+   </body>
+ </html>

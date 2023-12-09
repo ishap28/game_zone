@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="game.css"> -->
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-image: url('images/snake.png');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
+  }
+  
+  .cont {
+    display: grid;
+    width: 600px;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 0px 0 0px 0;
+  }
+  
+  .cont div {
+    width: 60px;
+    height: 60px;
+    border: 0.2px solid black;
+  }
+  
+  #p1,
+  #p2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: rgb(125, 192, 143);
+    position: relative;
+    border: 3px solid black;
+  
+    /* position: absolute; */
+  }
+  
+  #p1 {
+    position: relative;
+    top: 0px;
+    transition: all linear 0.5s;
+    /* top: 0; */
+    left: -62px;
+    z-index: 2;
+  }
+  
+  #p2 {
+    z-index: 2;
+    position: relative;
+    top: -55px;
+    left: -62px;
+    transition: all linear 0.5s;
+    background-color: rgb(243, 181, 46);
+  }
+  
+  img {
+    position: relative;
+    top: -615px;
+    left: 8px;
+    /* z-index: -1; */
+    margin: 0;
+    width: 615px;
+    height: 615px;
+  }
+  #diceCont {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 200px;
+    left: 120px;
+    font-size: 3rem;
+    z-index: 99;
+    color: antiquewhite;
+  }
+  #diceBtn {
+    z-index: 99;
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgb(4, 12, 19);
+    color: antiquewhite;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 1250px) {
+    
+    #diceCont {
+      display: flex;
+      place-items: none;
+      top: 92vh;
+      left: 36vw;
+      border: 2px solid red;
+    }
+    #diceBtn {
+      width: 200px;
+      margin-left: 20px;
+    }
+  }
+  @media (max-width: 1250px) {
+    
+    #diceCont {
+      display: flex;
+      place-items: none;
+      top: 99vh;
+      left: 10vw;
+      /* border: 2px solid red; */
+    }
+    #diceBtn {
+      width: 200px;
+      margin-left: 20px;
+    }
+  }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- <h1>Snakes and ladder</h1> -->
+
+    <div id="diceCont">
+        <p>Snake & Ladder</p>
+        <p id="tog">Green's Turn : </p>
+        <p id="dice">0</p>
+        <button id="diceBtn">ROLL</button>
+    </div>
+
+
+    <div class="cont">
+
+
+
+        <div class="box" id="b100">
+
+
+        </div>
+        <div class="box" id="b99">
+
+        </div>
+        <div class="box" id="b98">
+
+        </div>
+        <div class="box" id="b97">
+
+        </div>
+        <div class="box" id="b96">
+
+        </div>
+        <div class="box" id="b95">
+
+        </div>
+        <div class="box" id="b94">
+
+        </div>
+        <div class="box" id="b93">
+
+        </div>
+        <div class="box" id="b92">
+
+        </div>
+        <div class="box" id="b91">
+
+        </div>
+        <div class="box" id="b81">
+
+        </div>
+        <div class="box" id="b82">
+
+        </div>
+        <div class="box" id="b83">
+
+        </div>
+        <div class="box" id="b84">
+
+        </div>
+        <div class="box" id="b85">
+
+        </div>
+        <div class="box" id="b86">
+
+        </div>
+        <div class="box" id="b87">
+
+        </div>
+        <div class="box" id="b88">
+
+        </div>
+        <div class="box" id="b89">
+
+        </div>
+        <div class="box" id="b90">
+
+        </div>
+        <div class="box" id="b80">
+
+        </div>
+        <div class="box" id="b79">
+
+        </div>
+        <div class="box" id="b78">
+
+        </div>
+        <div class="box" id="b77">
+
+        </div>
+        <div class="box" id="b76">
+
+        </div>
+        <div class="box" id="b75">
+
+        </div>
+        <div class="box" id="b74">
+
+        </div>
+        <div class="box" id="b73">
+
+        </div>
+        <div class="box" id="b72">
+
+        </div>
+        <div class="box" id="b71">
+
+        </div>
+        <div class="box" id="b61">
+
+        </div>
+        <div class="box" id="b62">
+
+        </div>
+        <div class="box" id="b63">
+
+        </div>
+        <div class="box" id="b64">
+
+        </div>
+        <div class="box" id="b65">
+
+        </div>
+        <div class="box" id="b66">
+
+        </div>
+        <div class="box" id="b67">
+
+        </div>
+        <div class="box" id="b68">
+
+        </div>
+        <div class="box" id="b69">
+
+        </div>
+        <div class="box" id="b70">
+
+        </div>
+        <div class="box" id="b60">
+
+        </div>
+        <div class="box" id="b59">
+
+        </div>
+        <div class="box" id="b58">
+
+        </div>
+        <div class="box" id="b57">
+
+        </div>
+        <div class="box" id="b56">
+
+        </div>
+        <div class="box" id="b55">
+
+        </div>
+        <div class="box" id="b54">
+
+        </div>
+        <div class="box" id="b53">
+
+        </div>
+        <div class="box" id="b52">
+
+        </div>
+        <div class="box" id="b51">
+
+        </div>
+        <div class="box" id="b41">
+
+        </div>
+        <div class="box" id="b42">
+
+        </div>
+        <div class="box" id="b43">
+
+        </div>
+        <div class="box" id="b44">
+
+        </div>
+        <div class="box" id="b45">
+
+        </div>
+        <div class="box" id="b46">
+
+        </div>
+        <div class="box" id="b47">
+
+        </div>
+        <div class="box" id="b48">
+
+        </div>
+        <div class="box" id="b49">
+
+        </div>
+        <div class="box" id="b50">
+
+        </div>
+        <div class="box" id="b40">
+
+        </div>
+        <div class="box" id="b39">
+
+        </div>
+        <div class="box" id="b38">
+
+        </div>
+        <div class="box" id="b37">
+
+        </div>
+        <div class="box" id="b36">
+
+        </div>
+        <div class="box" id="b35">
+
+        </div>
+        <div class="box" id="b34">
+
+        </div>
+        <div class="box" id="b33">
+
+        </div>
+        <div class="box" id="b32">
+
+        </div>
+        <div class="box" id="b31">
+
+        </div>
+        <div class="box" id="b21">
+
+        </div>
+        <div class="box" id="b22">
+
+        </div>
+        <div class="box" id="b23">
+
+        </div>
+        <div class="box" id="b24">
+
+        </div>
+        <div class="box" id="b25">
+
+        </div>
+        <div class="box" id="b26">
+
+        </div>
+        <div class="box" id="b27">
+
+        </div>
+        <div class="box" id="b28">
+
+        </div>
+        <div class="box" id="b29">
+
+        </div>
+        <div class="box" id="b30">
+
+        </div>
+        <div class="box" id="b20">
+
+        </div>
+        <div class="box" id="b19">
+
+        </div>
+        <div class="box" id="b18">
+
+        </div>
+        <div class="box" id="b17">
+
+        </div>
+        <div class="box" id="b16">
+
+        </div>
+        <div class="box" id="b15">
+
+        </div>
+        <div class="box" id="b14">
+
+        </div>
+        <div class="box" id="b13">
+
+        </div>
+        <div class="box" id="b12">
+
+        </div>
+        <div class="box" id="b11">
+
+        </div>
+        <div class="box" id="b01">
+
+            <p id="p1"></p>
+            <p id="p2"></p>
+
+        </div>
+        <div class="box" id="b02">
+
+        </div>
+        <div class="box" id="b03">
+
+        </div>
+        <div class="box" id="b04">
+
+        </div>
+        <div class="box" id="b05">
+
+        </div>
+        <div class="box" id="b06">
+
+        </div>
+        <div class="box" id="b07">
+
+        </div>
+        <div class="box" id="b08">
+
+        </div>
+        <div class="box" id="b09">
+
+        </div>
+        <div class="box" id="b10">
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <img src="images/snake ladder.png" alt="">
+
+
+
+</body>
+<script>
+    let tog = 1
+let rollingSound = new Audio('rpg-dice-rolling-95182.mp3')
+let winSound = new Audio('winharpsichord-39642.mp3')
+
+
+
+let p1sum = 0
+let p2sum = 0
+
+
+function play(player, psum, correction, num) {
+    let sum
+    if (psum == 'p1sum') {
+
+        p1sum = p1sum + num
+
+        if (p1sum > 100) {
+            p1sum = p1sum - num
+            // sum = p1sum
+        }
+
+        if (p1sum == 2) {
+            p1sum = 55
+        }
+        if (p1sum == 13) {
+            p1sum = 27
+        }
+        if (p1sum == 26) {
+            p1sum = 6
+        }
+        if (p1sum == 30) {
+            p1sum = 11
+        }
+        if (p1sum == 13) {
+            p1sum = 27
+        }
+        if (p1sum == 31) {
+            p1sum = 67
+        }
+        if (p1sum == 38) {
+            p1sum = 65
+        }
+        if (p1sum == 42) {
+            p1sum = 16
+        }
+        if (p1sum == 60) {
+            p1sum = 62
+        }
+        if (p1sum == 69) {
+            p1sum = 87
+        }
+        if (p1sum == 75) {
+            p1sum = 8
+        }
+        if (p1sum == 76) {
+            p1sum = 95
+        }
+        if (p1sum == 97) {
+            p1sum = 44
+        }
+        if (p1sum == 82) {
+            p1sum = 58
+        }
+
+        sum = p1sum
+
+
+
+    }
+
+    if (psum == 'p2sum') {
+
+        p2sum = p2sum + num
+
+        if (p2sum > 100) {
+            p2sum = p2sum - num
+            // sum = p1sum
+        }
+        
+
+        if (p2sum == 2) {
+            p2sum = 55
+        }
+        if (p2sum == 13) {
+            p2sum = 27
+        }
+        if (p2sum == 26) {
+            p2sum = 6
+        }
+        if (p2sum == 30) {
+            p2sum = 11
+        }
+        if (p2sum == 13) {
+            p2sum = 27
+        }
+        if (p2sum == 31) {
+            p2sum = 67
+        }
+        if (p2sum == 38) {
+            p2sum = 65
+        }
+        if (p2sum == 42) {
+            p2sum = 16
+        }
+        if (p2sum == 60) {
+            p2sum = 62
+        }
+        if (p2sum == 69) {
+            p2sum = 87
+        }
+        if (p2sum == 75) {
+            p2sum = 8
+        }
+        if (p2sum == 76) {
+            p2sum = 95
+        }
+        if (p2sum == 97) {
+            p2sum = 44
+        }
+        if (p2sum == 82) {
+            p2sum = 58
+        }
+
+        sum = p2sum
+
+
+
+    }
+
+
+    document.getElementById(`${player}`).style.transition = `linear all .5s`
+
+
+
+
+
+    if (sum < 10) {
+
+        document.getElementById(`${player}`).style.left = `${(sum - 1) * 62}px`
+        document.getElementById(`${player}`).style.top = `${-0 * 62 - correction}px`
+
+
+    }
+
+    else if (sum == 100) {
+        winSound.play()
+        if (player == 'p1') {
+            alert("Green Won !!")
+        }
+        else if (player == 'p2') {
+            alert("Yellow Won !!")
+        }
+        location.reload()
+    }
+
+    else {
+
+        numarr = Array.from(String(sum))
+        n1 = eval(numarr.shift())
+        n2 = eval(numarr.pop())
+        // console.log(n1, n2)
+
+        if (n1 % 2 != 0) {
+
+            if (n2 == 0) {
+                document.getElementById(`${player}`).style.left = `${(9) * 62}px`
+                document.getElementById(`${player}`).style.top = `${(-n1 + 1) * 62 - correction}px`
+            }
+            else {
+                document.getElementById(`${player}`).style.left = `${(9 - (n2 - 1)) * 62}px`
+                document.getElementById(`${player}`).style.top = `${-n1 * 62 - correction}px`
+
+            }
+
+        }
+        else if (n1 % 2 == 0) {
+            if (n2 == 0) {
+
+                document.getElementById(`${player}`).style.left = `${(0) * 62}px`
+                document.getElementById(`${player}`).style.top = `${(-n1 + 1) * 62 - correction}px`
+            }
+            else {
+
+                document.getElementById(`${player}`).style.left = `${(n2 - 1) * 62}px`
+                document.getElementById(`${player}`).style.top = `${-n1 * 62 - correction}px`
+            }
+
+        }
+
+
+
+    }
+}
+
+
+document.getElementById("diceBtn").addEventListener("click", function () {
+    rollingSound.play()
+    num = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    document.getElementById("dice").innerText = num
+
+
+    if (tog % 2 != 0) {
+        document.getElementById('tog').innerText = "Yellow's Turn : "
+        play('p1', 'p1sum', 0, num)
+
+    }
+
+    else if (tog % 2 == 0) {
+        document.getElementById('tog').innerText = "Green's Turn : "
+
+        play('p2', 'p2sum', 55, num)
+
+    }
+
+    tog = tog + 1
+
+
+
+
+})
+</script>
+
+</html>
