@@ -55,6 +55,9 @@ app.post("/login",async (req,res)=>{
 app.get("/snake",(req,res)=>{
     res.render("snake");
 })
+app.get("/space",(req,res)=>{
+    res.render("space");
+})
 
 app.listen(3000,()=>{
 
