@@ -58,6 +58,12 @@ app.get("/snake",(req,res)=>{
 app.get("/space",(req,res)=>{
     res.render("space");
 })
+app.get("/beyblade",(req,res)=>{
+    res.render("beyblade");
+})
+app.get("/rock",(req,res)=>{
+    res.render("rock");
+})
 
 app.listen(3000,()=>{
 
