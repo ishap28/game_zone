@@ -32,7 +32,7 @@ app.post("/signup",async (req,res)=>{
     }
 await collection.insertMany([data])
 
-res.render("home")
+res.render("login")
 
 })
 
@@ -63,6 +63,16 @@ app.get("/beyblade",(req,res)=>{
 })
 app.get("/rock",(req,res)=>{
     res.render("rock");
+})
+app.get("/quiz",(req,res)=>{
+    res.render("quiz");
+})
+app.get("/tic",(req,res)=>{
+    res.render("tic");
+})
+
+app.get("/brick",(req,res)=>{
+    res.render("brick");
 })
 
 app.listen(3000,()=>{
