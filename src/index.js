@@ -83,7 +83,12 @@ app.get("/puzzle",(req,res)=>{
 app.get("/card",(req,res)=>{
     res.render("card");
 })
-
+app.get("/cross",(req,res)=>{
+    res.render("cross");
+})
+app.get("/maze",(req,res)=>{
+    res.render("maze");
+})
 app.listen(3000,()=>{
 
     console.log("connected");
