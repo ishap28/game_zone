@@ -74,6 +74,15 @@ app.get("/tic",(req,res)=>{
 app.get("/brick",(req,res)=>{
     res.render("brick");
 })
+app.get("/wordle",(req,res)=>{
+    res.render("wordle");
+})
+app.get("/puzzle",(req,res)=>{
+    res.render("puzzle");
+})
+app.get("/card",(req,res)=>{
+    res.render("card");
+})
 
 app.listen(3000,()=>{
 
